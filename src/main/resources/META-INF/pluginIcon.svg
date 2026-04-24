@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+    <defs>
+        <clipPath id="screenClip">
+            <rect x="4" y="9" width="25" height="22" rx="1" />
+        </clipPath>
+    </defs>
+    
+    <!-- Base TV Body (Wood Brown) -->
+    <rect x="1" y="6" width="38" height="28" rx="2" fill="#7A5230" />
+    
+    <!-- Screen Bezel (Dark Brown) -->
+    <rect x="3" y="8" width="27" height="24" rx="1.5" fill="#2E1F16" />
+    
+    <!-- Base Screen Color -->
+    <rect x="4" y="9" width="25" height="22" rx="1" fill="#9A9FA6" />
+    
+    <!-- Screen Shadow (Curved) -->
+    <path d="M 4 28 Q 16 28 25 9 L 30 9 L 30 32 L 4 32 Z" fill="#7D818A" clip-path="url(#screenClip)" />
+    
+    <!-- Control Panel -->
+    <!-- Single vertical line -->
+    <line x1="31.5" y1="6" x2="31.5" y2="34" stroke="#F4F0EC" stroke-width="1" />
+    
+    <!-- Horizontal line -->
+    <line x1="31.5" y1="12" x2="39" y2="12" stroke="#F4F0EC" stroke-width="1" />
+    
+    <!-- Top indicator light -->
+    <circle cx="35" cy="9.5" r="1" fill="#F4F0EC" />
+    
+    <!-- Dial Box -->
+    <rect x="33" y="14" width="4" height="4" rx="0.5" fill="#F4F0EC" />
+    <!-- Inner Dial matching the wooden body -->
+    <circle cx="35" cy="16" r="1.2" fill="#7A5230" />
+    
+    <!-- Bottom Vent Outline -->
+    <rect x="33.5" y="24" width="3" height="7" rx="0.5" fill="none" stroke="#F4F0EC" stroke-width="1" />
+</svg>
