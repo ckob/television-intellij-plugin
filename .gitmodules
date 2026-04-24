@@ -1,0 +1,6 @@
+[submodule "references/lazygit-intellij-plugin"]
+	path = references/lazygit-intellij-plugin
+	url = git@github.com:ckob/lazygit-intellij-plugin.git
+[submodule "references/television-vscode"]
+	path = references/television-vscode
+	url = git@github.com:alexpasmantier/television-vscode.git

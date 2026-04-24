@@ -1,51 +1,54 @@
-# television-intellij-plugin
-
-![Build](https://github.com/ckob/television-intellij-plugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
-
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [ ] Adjust the [group](./gradle.properties), as well as the [id](./src/main/resources/META-INF/plugin.xml), [name](./src/main/resources/META-INF/plugin.xml), and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin description in `README` (see [Tips][docs:plugin-description])
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the `MARKETPLACE_ID` in the above README badges. You can obtain it once the plugin is published to JetBrains Marketplace.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
+# Television for IntelliJ
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+Bring the speed and elegance of **Television** directly into your JetBrains IDE. 
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+This plugin integrates [Television](https://github.com/alexpasmantier/television) directly in IntelliJ IDEs, providing a fast and extensible fuzzy finder TUI as an alternative to Telescope.
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+### Features
+- **Television Files:** Quickly search through your workspace files using the `files` channel.
+- **Television Text (grep):** Search through text in your workspace using the `text` channel.
+- **Dynamic Channels:** Define custom `tv` channels (like `git-files` or `todo-comments`) right from the IDE settings.
+- **Smart Working Directories:** Execute your channels against the Project Root or the Current File Directory (CWD).
+- **Immersive UI:** Toggles Television in a dedicated, full-screen editor tab.
+- **Smart Navigation:** Selecting a file instantly opens it right in your IDE's editor at the specified line and column.
+
 <!-- Plugin description end -->
 
 ## Installation
+- Install the plugin from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/XXX-television).
+- Alternatively, search for **"Television"** (by ckob) directly in your IDE via `Settings` -> `Plugins` -> `Marketplace`.
 
-- Using the IDE built-in plugin system:
+## Usage
+- Search for the actions `Television: Files` and `Television: Text` in the IDE (Double Shift or `Cmd+Shift+A`).
+- Head to `Settings -> Tools -> Television` to map new channels, configure their Working Directory, or pass the active editor selection to the command.
+- You can assign custom keyboard shortcuts to your configured channels in `Settings -> Keymap`.
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "television-intellij-plugin"</kbd> >
-  <kbd>Install</kbd>
+### IdeaVim Configuration
+If you use IdeaVim, you can map the toggle actions in your `.ideavimrc` file. For the default channels:
 
-- Using JetBrains Marketplace:
+```vim
+" Map <leader>ff to open Television file finder
+nmap <leader>ff <Action>(Television.Channel.Files)
 
-  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
+" Map <leader>fs to open Television text finder (grep)
+nmap <leader>fs <Action>(Television.Channel.Text)
+```
 
-  You can also download the [latest release](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID/versions) from JetBrains Marketplace and install it manually using
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+*(Note: Custom channels created in Settings will have dynamically generated IDs. You can find these IDs by configuring a shortcut in the IDE Keymap and inspecting your keymap XML, or by using the `trackaction` feature in IdeaVim).*
 
-- Manually:
+## Requirements
+The extension requires [television](https://github.com/alexpasmantier/television) to be installed and available on your PATH.
 
-  Download the [latest release](https://github.com/ckob/television-intellij-plugin/releases/latest) and install it manually using
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+For example, on macOS with Homebrew:
+```bash
+brew install television
+```
 
+Once installed, ensure the `files` and `text` channels are available:
+```bash
+tv update-channels
+```
 
----
-Plugin based on the [IntelliJ Platform Plugin Template][template].
-
-[template]: https://github.com/JetBrains/intellij-platform-plugin-template
-[docs:plugin-description]: https://plugins.jetbrains.com/docs/intellij/plugin-user-experience.html#plugin-description-and-presentation
+## How it works
+This plugin runs Television in a terminal widget using the `--no-remote` flag and redirects the standard output to an IPC file. It then parses the file path and line number to open the selection directly in the IDE.

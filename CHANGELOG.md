@@ -1,7 +1,11 @@
-<!-- Keep a Changelog guide -> https://keepachangelog.com -->
-
-# television-intellij-plugin Changelog
+# Television Changelog
 
 ## [Unreleased]
+
+## [0.1.0]
+
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+- Initial release of the Television plugin for IntelliJ.
+- Support for `tv files` and `tv text` commands.
+- Immersive full-screen editor tab UI for fuzzy finding.
