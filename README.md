@@ -16,7 +16,7 @@ This plugin integrates [Television](https://github.com/alexpasmantier/television
 <!-- Plugin description end -->
 
 ## Installation
-- Install the plugin from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/XXX-television).
+- Install the plugin from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/31448-television).
 - Alternatively, search for **"Television"** (by ckob) directly in your IDE via `Settings` -> `Plugins` -> `Marketplace`.
 
 ## Usage
