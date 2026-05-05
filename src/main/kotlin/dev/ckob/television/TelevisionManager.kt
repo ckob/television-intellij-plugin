@@ -163,9 +163,9 @@ class TelevisionEditor(
         val tvCommand = "$tvPath --no-remote --keybindings \"enter=\\\"confirm_selection\\\"\" ${virtualFile.channel}$inputArgs > \"${virtualFile.outputFilePath}\""
         
         val shellCommand = if (SystemInfo.isWindows) {
-            listOf("cmd.exe", "/C", tvCommand)
+            listOf("cmd.exe", "/C", "$tvCommand || pause")
         } else {
-            listOf("sh", "-c", tvCommand)
+            listOf("sh", "-c", "$tvCommand || { echo \"\"; echo \"Process exited with error. Press Enter to close...\"; read dummy; }")
         }
         
         val startupOptions = ShellStartupOptions.Builder()
