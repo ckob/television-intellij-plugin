@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- Fixed command execution failing on Windows when the Television executable path contains spaces.
+
 ## [0.1.1] - 2026-05-05
 
 ### Added

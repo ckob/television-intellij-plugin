@@ -160,10 +160,12 @@ class TelevisionEditor(
             ""
         }
         
-        val tvCommand = "$tvPath --no-remote --keybindings \"enter=\\\"confirm_selection\\\"\" ${virtualFile.channel}$inputArgs > \"${virtualFile.outputFilePath}\""
+        val tvCommand = "\"$tvPath\" --no-remote --keybindings \"enter=\\\"confirm_selection\\\"\" ${virtualFile.channel}$inputArgs > \"${virtualFile.outputFilePath}\""
         
         val shellCommand = if (SystemInfo.isWindows) {
-            listOf("cmd.exe", "/C", "$tvCommand || pause")
+            val scriptFile = File(System.getProperty("java.io.tmpdir"), "television-run-${System.currentTimeMillis()}.cmd")
+            scriptFile.writeText("@echo off\r\n$tvCommand\r\nif %ERRORLEVEL% NEQ 0 pause\r\n")
+            listOf("cmd.exe", "/C", scriptFile.absolutePath)
         } else {
             listOf("sh", "-c", "$tvCommand || { echo \"\"; echo \"Process exited with error. Press Enter to close...\"; read dummy; }")
         }
