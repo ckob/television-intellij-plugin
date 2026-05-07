@@ -1,5 +1,13 @@
-# Television for IntelliJ
+<div align="center">
 
+# 📺 [Television for IntelliJ](https://plugins.jetbrains.com/plugin/31448-television) 📺 
+
+**A fuzzy finder for IntelliJ IDEs based on [television](https://github.com/alexpasmantier/television)**
+
+<img width="2032" height="1329" alt="television-intellij-plugin" src="https://github.com/user-attachments/assets/fe93ae81-7510-47cd-8796-8c28e723f97c" />
+</div>
+
+## About
 <!-- Plugin description -->
 Bring the blazing speed and elegance of **Television** directly into your JetBrains IDE. 
 
@@ -64,3 +72,7 @@ nmap <leader>fg <Action>(Television.Channel.GitStatus)
 
 ## How it works
 This plugin runs Television in a terminal widget using the `--no-remote` flag and redirects the standard output to an IPC file. It then parses the file path and line number to open the selection directly in the IDE.
+
+## Acknowledgments
+- A huge thank you to the creators of the [Television](https://github.com/alexpasmantier/television) project for building such a blazing fast and elegant fuzzy finder.
+- This plugin was heavily inspired by the [television-vscode](https://github.com/alexpasmantier/television-vscode) extension, which served as a great reference for the IPC integration strategy.
