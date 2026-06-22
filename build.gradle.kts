@@ -22,6 +22,7 @@ repositories {
     mavenCentral()
     intellijPlatform {
         defaultRepositories()
+        intellijDependencies()
     }
 }
 
@@ -31,6 +32,7 @@ dependencies {
 
     intellijPlatform {
         intellijIdea(providers.gradleProperty("platformVersion"))
+        javaCompiler()
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
         testFramework(TestFrameworkType.Platform)
