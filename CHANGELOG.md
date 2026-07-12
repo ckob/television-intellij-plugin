@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped Kotlin dependency versions and optimized Gradle platform configuration.
+- Disabled compiler-time bytecode instrumentation to resolve potential compilation failures.
+
 ## [0.1.2] - 2026-05-07
 
 ### Fixed

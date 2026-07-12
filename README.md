@@ -73,6 +73,22 @@ nmap <leader>fg <Action>(Television.Channel.GitStatus)
 ## How it works
 This plugin runs Television in a terminal widget using the `--no-remote` flag and redirects the standard output to an IPC file. It then parses the file path and line number to open the selection directly in the IDE.
 
+## Maintaining & Releasing
+
+To release a new version of the plugin, you don't need to manually edit `CHANGELOG.md` or handle git tags. Follow these automated steps:
+
+1. **Update the version:** Change `pluginVersion` in `gradle.properties` to your target version (e.g. `0.1.3`).
+2. **Commit & Push:** Push this change to the `main` branch.
+3. **Build Draft Action:** The GitHub Actions `Build` workflow will run automatically, compile the plugin, and generate/update a **Draft Release** on GitHub containing the built assets.
+4. **Publish Release:** Go to your repository's **Releases** page on GitHub, click **Edit** on the draft, and then click **Publish Release**.
+5. **Auto-Patching:** Once published, the `Release` workflow automatically triggers, updates `CHANGELOG.md` with the release notes, publishes the plugin to the JetBrains Marketplace, and creates a pull request back to `main` with the patched changelog.
+
+### Managing Changelog Notes during Development
+
+You can maintain a running list of features and bug fixes under the `## [Unreleased]` section of `CHANGELOG.md` as you develop:
+- Write your changes under `## [Unreleased]` in the standard Keep a Changelog format.
+- When publishing the GitHub Release, you can leave the release notes body **empty**. The automated release action will automatically promote everything under `## [Unreleased]` to your new release version section, and format a fresh empty `## [Unreleased]` block at the top!
+
 ## Acknowledgments
 - A huge thank you to the creators of the [Television](https://github.com/alexpasmantier/television) project for building such a blazing fast and elegant fuzzy finder.
 - This plugin was heavily inspired by the [television-vscode](https://github.com/alexpasmantier/television-vscode) extension, which served as a great reference for the IPC integration strategy.
