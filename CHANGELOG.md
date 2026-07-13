@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-07-13
+
 ### Changed
 
 - Bumped Kotlin dependency versions and optimized Gradle platform configuration.
@@ -28,7 +30,8 @@
 - Support for `tv files` and `tv text` commands.
 - Immersive full-screen editor tab UI for fuzzy finding.
 
-[Unreleased]: https://github.com/ckob/television-intellij-plugin/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/ckob/television-intellij-plugin/compare/0.1.3...HEAD
+[0.1.3]: https://github.com/ckob/television-intellij-plugin/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/ckob/television-intellij-plugin/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/ckob/television-intellij-plugin/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/ckob/television-intellij-plugin/commits/0.1.0
